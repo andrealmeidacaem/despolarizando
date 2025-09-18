@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Despolarizando — Turismo em Caém</title>
   <style>
-    /* Estilos mínimos embutidos para garantir que a página funcione isolada */
     :root{
       --primary:#081026;
       --accent:#ff6b6b;
@@ -53,31 +52,6 @@
     .article blockquote{
       background:#f7fbff;border-left:4px solid var(--accent);padding:12px 14px;margin:14px 0;font-style:italic;color:#234b5a;
     }
-    /* comentários */
-    .comentarios{
-      margin-top:22px;
-      padding:16px;
-      border-radius:10px;
-      background:#fbfdff;
-      border:1px solid #e6eef6;
-    }
-    .comentarios h3{margin:0 0 12px 0;color:#07132a}
-    form {display:flex;flex-direction:column;gap:10px}
-    input[type="text"], textarea {
-      padding:10px;border:1px solid #e3eef6;border-radius:8px;font-size:0.95rem;font-family:inherit;
-    }
-    textarea{min-height:100px;resize:vertical}
-    button[type="submit"]{
-      background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer;
-      width:max-content;
-    }
-    button[type="submit"]:hover{opacity:0.95}
-    .lista-comentarios{margin-top:18px}
-    .comentario{background:white;border:1px solid #e7eef6;border-radius:8px;padding:10px;margin-bottom:10px}
-    .comentario .cab{display:flex;gap:8px;align-items:center;margin-bottom:6px}
-    .comentario strong{color:#0b5aa6}
-    .comentario time{color:var(--muted);font-size:0.85rem}
-    .sem-comentarios{color:var(--muted);padding:6px 0}
     footer.footer{margin:28px auto 40px;padding:18px;text-align:center;color:#fff;background:var(--primary);border-radius:8px;max-width:1000px}
     @media (max-width:720px){
       .brand h1{font-size:1rem}
@@ -151,119 +125,30 @@
       <p>Como o turismo poderia mudar a realidade de cidades como Caém?<br>👉 Deixe sua opinião nos comentários abaixo e participe dessa reflexão: turismo é sobre pessoas, não sobre partidos.</p>
     </article>
 
-    <!-- Caixa de comentários com lista visível -->
+    <!-- Caixa de comentários Disqus -->
     <section class="comentarios" aria-labelledby="comentarios-title">
       <h3 id="comentarios-title">Deixe sua opinião</h3>
 
-      <form id="comentarioForm" aria-describedby="comentarios-instrucao">
-        <input type="text" id="nome" name="nome" placeholder="Seu nome" required autocomplete="name" />
-        <textarea id="comentario" name="comentario" placeholder="Escreva sua opinião..." required></textarea>
-        <button type="submit">Enviar comentário</button>
-      </form>
-
-      <div class="lista-comentarios" id="listaComentarios" aria-live="polite">
-        <!-- comentários serão renderizados aqui -->
-      </div>
+      <div id="disqus_thread"></div>
+      <script>
+        /**
+         * Disqus Universal Embed Code
+         * Shortname: andrluizalmeidasantos
+         */
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://andrluizalmeidasantos.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>
+        Por favor, habilite o JavaScript para ver os 
+        <a href="https://disqus.com/?ref_noscript">comentários.</a>
+      </noscript>
     </section>
   </main>
 
   <footer class="footer">© 2025 Despolarizando — Todos os direitos reservados.</footer>
-
-  <script>
-    // roda somente após DOM pronto
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('comentarioForm');
-      const inputNome = document.getElementById('nome');
-      const inputTexto = document.getElementById('comentario');
-      const lista = document.getElementById('listaComentarios');
-
-      // tenta carregar comentários do localStorage com segurança
-      function carregarComentarios() {
-        const raw = localStorage.getItem('comentarios');
-        if (!raw) return [];
-        try {
-          const parsed = JSON.parse(raw);
-          return Array.isArray(parsed) ? parsed : [];
-        } catch (err) {
-          // valor corrompido: limpa e retorna array vazio
-          console.warn('localStorage "comentarios" inválido. Resetando.', err);
-          localStorage.removeItem('comentarios');
-          return [];
-        }
-      }
-
-      let comentarios = carregarComentarios();
-
-      function salvarComentarios() {
-        try {
-          localStorage.setItem('comentarios', JSON.stringify(comentarios));
-        } catch (err) {
-          console.error('Erro ao salvar comentários:', err);
-        }
-      }
-
-      function criarElementoComentario(c) {
-        const wrap = document.createElement('div');
-        wrap.className = 'comentario';
-
-        const cab = document.createElement('div');
-        cab.className = 'cab';
-
-        const nomeEl = document.createElement('strong');
-        nomeEl.textContent = c.nome;
-
-        const timeEl = document.createElement('time');
-        const dt = new Date(c.ts || Date.now());
-        timeEl.textContent = ' — ' + dt.toLocaleString();
-
-        cab.appendChild(nomeEl);
-        cab.appendChild(timeEl);
-
-        const p = document.createElement('p');
-        p.textContent = c.texto;
-
-        wrap.appendChild(cab);
-        wrap.appendChild(p);
-
-        return wrap;
-      }
-
-      function renderComentarios() {
-        lista.innerHTML = '';
-        if (!comentarios || comentarios.length === 0) {
-          const p = document.createElement('p');
-          p.className = 'sem-comentarios';
-          p.textContent = 'Seja o primeiro a comentar.';
-          lista.appendChild(p);
-          return;
-        }
-        comentarios.forEach(c => {
-          lista.appendChild(criarElementoComentario(c));
-        });
-      }
-
-      form.addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        const nome = inputNome.value.trim();
-        const texto = inputTexto.value.trim();
-        if (!nome || !texto) {
-          alert('Por favor, preencha seu nome e comentário.');
-          return;
-        }
-
-        const novo = { nome: nome, texto: texto, ts: Date.now() };
-        // adiciona no topo
-        comentarios.unshift(novo);
-        salvarComentarios();
-        renderComentarios();
-
-        form.reset();
-        inputNome.focus();
-      });
-
-      // render inicial
-      renderComentarios();
-    });
-  </script>
 </body>
 </html>
