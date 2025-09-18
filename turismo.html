@@ -125,30 +125,20 @@
       <p>Como o turismo poderia mudar a realidade de cidades como Caém?<br>👉 Deixe sua opinião nos comentários abaixo e participe dessa reflexão: turismo é sobre pessoas, não sobre partidos.</p>
     </article>
 
-    <!-- Caixa de comentários Disqus -->
-    <section class="comentarios" aria-labelledby="comentarios-title">
+    <!-- Caixa de comentários CommentBox -->
+    <section id="comentarios" aria-labelledby="comentarios-title">
       <h3 id="comentarios-title">Deixe sua opinião</h3>
-
-      <div id="disqus_thread"></div>
-      <script>
-        /**
-         * Disqus Universal Embed Code
-         * Shortname: andrluizalmeidasantos
-         */
-        (function() {
-          var d = document, s = d.createElement('script');
-          s.src = 'https://despolarizando.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-      <noscript>
-         
-        <a href="https://disqus.com/?ref_noscript">comentários.</a>
-      </noscript>
+      <div class="commentbox"></div>
     </section>
   </main>
 
   <footer class="footer">© 2025 Despolarizando — Todos os direitos reservados.</footer>
+
+  <!-- Script CommentBox.io -->
+  <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+  <script>
+    // ID público de teste. Se quiser personalizar/moderar, crie conta gratuita em commentbox.io
+    commentBox('5661505282742272-proj');
+  </script>
 </body>
 </html>
