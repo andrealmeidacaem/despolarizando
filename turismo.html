@@ -4,55 +4,266 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Despolarizando — Turismo em Caém</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
-    .comentarios {
-      margin-top: 40px;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      background: #f9f9f9;
+    /* Estilos mínimos embutidos para garantir que a página funcione isolada */
+    :root{
+      --primary:#081026;
+      --accent:#ff6b6b;
+      --muted:#6b8896;
+      --card:#ffffff;
+      --bg:#f5f7fa;
     }
-    .comentarios h3 {
-      margin-bottom: 15px;
-      color: #333;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color:#12202b;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
     }
-    .comentarios form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .header{
+      background:var(--primary);
+      color:white;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      position:sticky;
+      top:0;
+      z-index:40;
     }
-    .comentarios input, 
-    .comentarios textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-      width: 100%;
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+    .brand img{height:46px;border-radius:6px}
+    nav ul{list-style:none;display:flex;gap:12px;margin:0;padding:0}
+    nav a{color:#dbe9f6;text-decoration:none;font-weight:600;padding:6px 10px;border-radius:8px}
+    nav a:hover{background: rgba(255,255,255,0.03)}
+    .container{max-width:1000px;margin:28px auto;padding:0 18px}
+    .article{
+      background:var(--card);
+      border-radius:12px;
+      padding:22px;
+      box-shadow:0 10px 28px rgba(12,20,28,0.06);
     }
-    .comentarios textarea {
-      min-height: 100px;
-      resize: vertical;
+    .article h1{font-size:1.6rem;color:#07132a;margin-bottom:6px}
+    .article h2{font-size:1rem;color:#24435a;margin-top:0;margin-bottom:14px;font-weight:600}
+    .article p{color:#334e63;margin-bottom:12px}
+    .article ul{margin-left:20px;margin-bottom:12px}
+    .article blockquote{
+      background:#f7fbff;border-left:4px solid var(--accent);padding:12px 14px;margin:14px 0;font-style:italic;color:#234b5a;
     }
-    .comentarios button {
-      align-self: flex-start;
-      background: #0066cc;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
+    /* comentários */
+    .comentarios{
+      margin-top:22px;
+      padding:16px;
+      border-radius:10px;
+      background:#fbfdff;
+      border:1px solid #e6eef6;
     }
-    .comentarios button:hover {
-      background: #004999;
+    .comentarios h3{margin:0 0 12px 0;color:#07132a}
+    form {display:flex;flex-direction:column;gap:10px}
+    input[type="text"], textarea {
+      padding:10px;border:1px solid #e3eef6;border-radius:8px;font-size:0.95rem;font-family:inherit;
     }
-    .mensagem-enviada {
-      margin-top: 10px;
-      color: green;
-      display: none;
+    textarea{min-height:100px;resize:vertical}
+    button[type="submit"]{
+      background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer;
+      width:max-content;
     }
-    .lista-comentarios {
-      margin-top: 20px;
+    button[type="submit"]:hover{opacity:0.95}
+    .lista-comentarios{margin-top:18px}
+    .comentario{background:white;border:1px solid #e7eef6;border-radius:8px;padding:10px;margin-bottom:10px}
+    .comentario .cab{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+    .comentario strong{color:#0b5aa6}
+    .comentario time{color:var(--muted);font-size:0.85rem}
+    .sem-comentarios{color:var(--muted);padding:6px 0}
+    footer.footer{margin:28px auto 40px;padding:18px;text-align:center;color:#fff;background:var(--primary);border-radius:8px;max-width:1000px}
+    @media (max-width:720px){
+      .brand h1{font-size:1rem}
+      .article{padding:16px}
     }
-    .comentario {
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Despolarizando logo">
+      <div>
+        <div style="font-weight:700">Despolarizando</div>
+      </div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="episodios.html">Episódios</a></li>
+        <li><a href="turismo.html">Turismo</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="assine.html">Assine</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="article">
+      <h1>Turismo em Caém: quando a beleza pede mais que discursos</h1>
+      <h2>Um patrimônio invisível no coração da Bahia</h2>
+
+      <p>Em meio às discussões políticas que dividem o Brasil, um tema essencial permanece à margem: o turismo. Apesar de seu potencial para gerar desenvolvimento, renda e autoestima, ele ainda é tratado como promessa de campanha e não como prioridade nacional.</p>
+
+      <p>O município de Caém, localizado na Bahia, é um exemplo vivo dessa realidade. Com rios, cachoeiras, serras, história, gastronomia e hospitalidade, reúne todos os elementos para se tornar um destino de destaque no turismo sustentável. Mas falta o mais importante: investimentos concretos, planejamento estratégico e inclusão da comunidade.</p>
+
+      <hr />
+
+      <h3>O que falta para Caém virar referência?</h3>
+      <p>Turismo sustentável não se constrói apenas com belas fotos em redes sociais ou discursos eleitorais. Ele exige:</p>
+      <ul>
+        <li><strong>Acessibilidade:</strong> estradas seguras, transporte eficiente, sinalização adequada.</li>
+        <li><strong>Capacitação:</strong> cursos de inglês, gestão financeira e hospitalidade para empreendedores locais.</li>
+        <li><strong>Planejamento:</strong> integração entre comércio, cultura, eventos e natureza.</li>
+        <li><strong>Inclusão:</strong> participação ativa dos moradores em projetos, com clareza sobre benefícios e desafios.</li>
+      </ul>
+
+      <blockquote>“O turismo não pode ser imposto de cima para baixo. É preciso dialogar com quem vive a cidade, com quem empreende, com quem recebe os visitantes.”</blockquote>
+
+      <hr />
+
+      <h3>Um problema que atravessa gestões</h3>
+      <p>A falta de visão para o turismo não é exclusividade de um partido ou outro. É uma falha histórica, que atravessa governos de diferentes ideologias. Investimentos pontuais e desarticulados não conseguem criar impacto real — e deixam municípios como Caém invisíveis no mapa turístico nacional.</p>
+      <p>Enquanto isso, milhares de brasileiros perdem oportunidades de emprego, renda e desenvolvimento local que poderiam surgir de um projeto de turismo sustentável consistente.</p>
+
+      <hr />
+
+      <h3>Turismo não tem bandeira política</h3>
+      <p>Em um país polarizado, é preciso repetir: turismo não tem cor partidária. Ele é um dos caminhos mais democráticos para o desenvolvimento de um povo. Se Caém tivesse um plano bem estruturado, todos ganhariam: comerciantes, agricultores, artesãos, jovens e famílias inteiras.</p>
+
+      <blockquote>“Não se trata de esquerda ou direita. Trata-se de futuro.”</blockquote>
+
+      <hr />
+
+      <h3>Hora de transformar beleza em oportunidade</h3>
+      <p>Caém guarda riquezas naturais e culturais que poderiam orgulhar o Brasil e encantar o mundo. Mas para isso acontecer, é preciso coragem política, planejamento técnico e engajamento social.</p>
+
+      <hr />
+
+      <h3>✊ E você, o que pensa?</h3>
+      <p>Como o turismo poderia mudar a realidade de cidades como Caém?<br>👉 Deixe sua opinião nos comentários abaixo e participe dessa reflexão: turismo é sobre pessoas, não sobre partidos.</p>
+    </article>
+
+    <!-- Caixa de comentários com lista visível -->
+    <section class="comentarios" aria-labelledby="comentarios-title">
+      <h3 id="comentarios-title">Deixe sua opinião</h3>
+
+      <form id="comentarioForm" aria-describedby="comentarios-instrucao">
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" required autocomplete="name" />
+        <textarea id="comentario" name="comentario" placeholder="Escreva sua opinião..." required></textarea>
+        <button type="submit">Enviar comentário</button>
+      </form>
+
+      <div class="lista-comentarios" id="listaComentarios" aria-live="polite">
+        <!-- comentários serão renderizados aqui -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Despolarizando — Todos os direitos reservados.</footer>
+
+  <script>
+    // roda somente após DOM pronto
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('comentarioForm');
+      const inputNome = document.getElementById('nome');
+      const inputTexto = document.getElementById('comentario');
+      const lista = document.getElementById('listaComentarios');
+
+      // tenta carregar comentários do localStorage com segurança
+      function carregarComentarios() {
+        const raw = localStorage.getItem('comentarios');
+        if (!raw) return [];
+        try {
+          const parsed = JSON.parse(raw);
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (err) {
+          // valor corrompido: limpa e retorna array vazio
+          console.warn('localStorage "comentarios" inválido. Resetando.', err);
+          localStorage.removeItem('comentarios');
+          return [];
+        }
+      }
+
+      let comentarios = carregarComentarios();
+
+      function salvarComentarios() {
+        try {
+          localStorage.setItem('comentarios', JSON.stringify(comentarios));
+        } catch (err) {
+          console.error('Erro ao salvar comentários:', err);
+        }
+      }
+
+      function criarElementoComentario(c) {
+        const wrap = document.createElement('div');
+        wrap.className = 'comentario';
+
+        const cab = document.createElement('div');
+        cab.className = 'cab';
+
+        const nomeEl = document.createElement('strong');
+        nomeEl.textContent = c.nome;
+
+        const timeEl = document.createElement('time');
+        const dt = new Date(c.ts || Date.now());
+        timeEl.textContent = ' — ' + dt.toLocaleString();
+
+        cab.appendChild(nomeEl);
+        cab.appendChild(timeEl);
+
+        const p = document.createElement('p');
+        p.textContent = c.texto;
+
+        wrap.appendChild(cab);
+        wrap.appendChild(p);
+
+        return wrap;
+      }
+
+      function renderComentarios() {
+        lista.innerHTML = '';
+        if (!comentarios || comentarios.length === 0) {
+          const p = document.createElement('p');
+          p.className = 'sem-comentarios';
+          p.textContent = 'Seja o primeiro a comentar.';
+          lista.appendChild(p);
+          return;
+        }
+        comentarios.forEach(c => {
+          lista.appendChild(criarElementoComentario(c));
+        });
+      }
+
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        const nome = inputNome.value.trim();
+        const texto = inputTexto.value.trim();
+        if (!nome || !texto) {
+          alert('Por favor, preencha seu nome e comentário.');
+          return;
+        }
+
+        const novo = { nome: nome, texto: texto, ts: Date.now() };
+        // adiciona no topo
+        comentarios.unshift(novo);
+        salvarComentarios();
+        renderComentarios();
+
+        form.reset();
+        inputNome.focus();
+      });
+
+      // render inicial
+      renderComentarios();
+    });
+  </script>
+</body>
+</html>
