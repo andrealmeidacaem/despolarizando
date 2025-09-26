@@ -113,17 +113,20 @@
 
   </div>
 
+   <!-- Caixa de comentários CommentBox -->
+    <section id="comentarios" aria-labelledby="comentarios-title">
+      <h3 id="comentarios-title">Deixe sua opinião</h3>
+      <div class="commentbox"></div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Despolarizando — Todos os direitos reservados.</footer>
+
+  <!-- Script CommentBox.io -->
+  <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
   <script>
-    // Simulação simples de envio de opinião (no site real, implementar backend)
-    function submitOpinion(){
-      const text = document.getElementById('opiniaoText').value.trim();
-      const status = document.getElementById('opiniaoStatus');
-      if(!text){ status.textContent='Escreva sua opinião antes de enviar.'; return }
-      // Exibe mensagem temporária de envio — em produção, integrar com API do Despolarizando
-      status.textContent = 'Obrigado! Sua opinião foi recebida e será avaliada pela equipe.';
-      document.getElementById('opiniaoText').value = '';
-      setTimeout(()=>{ status.textContent=''; }, 6000);
-    }
+    // ID público de teste. Se quiser personalizar/moderar, crie conta gratuita em commentbox.io
+    commentBox('5751284263026688-proj');
   </script>
 </body>
 </html>
