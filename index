@@ -6,127 +6,35 @@
   <title>Despolarizando</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #fdfdfd, #f1f1f1);
-      color: #222;
-      overflow-x: hidden;
-    }
-
-    /* ===== Header ===== */
-    header {
-      background: #0d1b2a;
-      padding: 15px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header img {
-      height: 55px;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #e63946;
-    }
-
-    /* ===== Hero ===== */
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero h1 {
-      font-size: 2.8em;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #1d3557;
-    }
-    .hero p {
-      font-size: 1.2em;
-      color: #444;
-    }
-
-    /* ===== Background Icons ===== */
-    .bg-icons {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-    }
-    .bg-icons i {
-      position: absolute;
-      font-size: 60px;
-      color: rgba(0,0,0,0.05);
-    }
-    .bg-icons i:nth-child(1) { top: 15%; left: 10%; transform: rotate(-15deg); }
-    .bg-icons i:nth-child(2) { top: 40%; left: 80%; transform: rotate(20deg); }
-    .bg-icons i:nth-child(3) { top: 70%; left: 20%; transform: rotate(-10deg); }
-    .bg-icons i:nth-child(4) { top: 85%; left: 65%; transform: rotate(15deg); }
-    .bg-icons i:nth-child(5) { top: 25%; left: 55%; transform: rotate(-25deg); }
-    .bg-icons i:nth-child(6) { top: 55%; left: 35%; transform: rotate(10deg); }
-
-    /* ===== Icon Cards ===== */
-    .icons-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 25px;
-      padding: 60px 30px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .icon-card {
-      background: #fff;
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-    .icon-card:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-    .icon-card i {
-      font-size: 35px;
-      color: #e63946;
-      margin-bottom: 12px;
-    }
-    .icon-card h3 {
-      font-size: 1.1em;
-      font-weight: 600;
-      color: #1d3557;
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      background: #0d1b2a;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9em;
-    }
+    body { margin:0; font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#fdfdfd,#f1f1f1); color:#222; overflow-x:hidden; }
+    header { background:#0d1b2a; padding:15px 40px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:1000; }
+    header img { height:55px; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:600; font-size:15px; transition:0.3s; }
+    nav a:hover { color:#e63946; }
+    .hero { text-align:center; padding:80px 20px; position:relative; z-index:1; }
+    .hero h1 { font-size:2.8em; font-weight:700; margin-bottom:15px; color:#1d3557; }
+    .hero p { font-size:1.2em; color:#444; }
+    .bg-icons { position:absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; z-index:0; }
+    .bg-icons i { position:absolute; font-size:60px; color:rgba(0,0,0,0.05); }
+    .bg-icons i:nth-child(1) { top:15%; left:10%; transform:rotate(-15deg); }
+    .bg-icons i:nth-child(2) { top:40%; left:80%; transform:rotate(20deg); }
+    .bg-icons i:nth-child(3) { top:70%; left:20%; transform:rotate(-10deg); }
+    .bg-icons i:nth-child(4) { top:85%; left:65%; transform:rotate(15deg); }
+    .bg-icons i:nth-child(5) { top:25%; left:55%; transform:rotate(-25deg); }
+    .bg-icons i:nth-child(6) { top:55%; left:35%; transform:rotate(10deg); }
+    .icons-section { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:25px; padding:60px 30px; text-align:center; position:relative; z-index:1; }
+    .icon-card { background:#fff; padding:25px; border-radius:18px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:0.3s; }
+    .icon-card:hover { transform:translateY(-6px) scale(1.03); box-shadow:0 6px 15px rgba(0,0,0,0.15); }
+    .icon-card i { font-size:35px; color:#e63946; margin-bottom:12px; }
+    .icon-card h3 { font-size:1.1em; font-weight:600; color:#1d3557; }
+    footer { background:#0d1b2a; color:#fff; text-align:center; padding:20px; margin-top:40px; font-size:0.9em; }
   </style>
 </head>
 <body>
   <header>
     <img src="ChatGPT Image 16 de set. de 2025 07_38_20.png" alt="Logo Despolarizando">
     <nav>
+      <a href="lei-organica.html">Lei Orgânica</a>
       <a href="#sobre">Sobre</a>
       <a href="#episodios">Episódios</a>
       <a href="#fale">Fale Conosco</a>
@@ -148,38 +56,14 @@
   </section>
 
   <section class="icons-section">
-    <div class="icon-card">
-      <i class="fas fa-lightbulb"></i>
-      <h3>Ideias & Inspiração</h3>
-    </div>
-    <div class="icon-card">
-      <i class="fas fa-comments"></i>
-      <h3>Diálogo Aberto</h3>
-    </div>
-    <div class="icon-card">
-      <i class="fas fa-microphone"></i>
-      <h3>Podcast & Voz</h3>
-    </div>
-    <div class="icon-card">
-      <i class="fas fa-dove"></i>
-      <h3>Liberdade</h3>
-    </div>
-    <div class="icon-card">
-      <i class="fas fa-globe"></i>
-      <h3>Turismo</h3>
-    </div>
-    <div class="icon-card">
-      <i class="fas fa-robot"></i>
-      <h3>Tecnologia</h3>
-    </div>
-    <div class="icon-card">
-      <i class="fas fa-brain"></i>
-      <h3>Psicologia & Ansiedade</h3>
-    </div>
-    <div class="icon-card">
-      <i class="fas fa-leaf"></i>
-      <h3>Sustentabilidade</h3>
-    </div>
+    <div class="icon-card"><i class="fas fa-lightbulb"></i><h3>Ideias & Inspiração</h3></div>
+    <div class="icon-card"><i class="fas fa-comments"></i><h3>Diálogo Aberto</h3></div>
+    <div class="icon-card"><i class="fas fa-microphone"></i><h3>Podcast & Voz</h3></div>
+    <div class="icon-card"><i class="fas fa-dove"></i><h3>Liberdade</h3></div>
+    <div class="icon-card"><i class="fas fa-globe"></i><h3>Turismo</h3></div>
+    <div class="icon-card"><i class="fas fa-robot"></i><h3>Tecnologia</h3></div>
+    <div class="icon-card"><i class="fas fa-brain"></i><h3>Psicologia & Ansiedade</h3></div>
+    <div class="icon-card"><i class="fas fa-leaf"></i><h3>Sustentabilidade</h3></div>
   </section>
 
   <footer>
